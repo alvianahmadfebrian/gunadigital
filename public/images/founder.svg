@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f1f5f9"/>
+      <stop offset="50%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#cbd5e1"/>
+    </linearGradient>
+    <linearGradient id="suitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="lapelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="shirtGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f8fafc"/>
+    </linearGradient>
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fed7aa"/>
+      <stop offset="100%" stop-color="#fdba74"/>
+    </linearGradient>
+    <linearGradient id="hairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f172a" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Studio Background -->
+  <rect width="600" height="800" rx="36" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle Lighting Radial -->
+  <circle cx="300" cy="300" r="240" fill="#ffffff" opacity="0.4"/>
+
+  <!-- Character Group with Shadow -->
+  <g filter="url(#softShadow)">
+    
+    <!-- Body / Suit Torso -->
+    <path d="M 120 800 L 160 520 L 220 460 L 300 480 L 380 460 L 440 520 L 480 800 Z" fill="url(#suitGrad)"/>
+    
+    <!-- Crisp Shirt Collar & V-Neck -->
+    <polygon points="260,450 340,450 300,560" fill="url(#shirtGrad)"/>
+    <polygon points="280,450 320,450 300,510" fill="#2563eb"/> <!-- Stylish Royal Blue Tie/Accent -->
+    
+    <!-- Suit Lapels -->
+    <!-- Left Lapel -->
+    <path d="M 220 460 L 290 570 L 260 575 L 180 500 Z" fill="url(#lapelGrad)"/>
+    <!-- Right Lapel -->
+    <path d="M 380 460 L 310 570 L 340 575 L 420 500 Z" fill="url(#lapelGrad)"/>
+
+    <!-- Neck -->
+    <rect x="270" y="380" width="60" height="80" rx="10" fill="url(#skinGrad)"/>
+    <!-- Neck Shadow -->
+    <path d="M 270 410 Q 300 430 330 410 L 330 440 L 270 440 Z" fill="#fb923c" opacity="0.3"/>
+
+    <!-- Head / Face -->
+    <ellipse cx="300" cy="310" rx="75" ry="95" fill="url(#skinGrad)"/>
+    
+    <!-- Ears -->
+    <ellipse cx="225" cy="315" rx="12" ry="20" fill="url(#skinGrad)"/>
+    <ellipse cx="375" cy="315" rx="12" ry="20" fill="url(#skinGrad)"/>
+
+    <!-- Hair -->
+    <path d="M 220 300 C 215 220, 260 190, 300 190 C 345 190, 385 220, 380 300 C 370 240, 350 220, 300 220 C 250 220, 230 250, 220 300 Z" fill="url(#hairGrad)"/>
+    <!-- Modern Side Part & Texture -->
+    <path d="M 230 250 Q 290 200 370 240 Q 330 210 260 230 Z" fill="#334155"/>
+
+    <!-- Eyes / Eyebrows -->
+    <!-- Eyebrows -->
+    <path d="M 255 285 Q 275 278 288 285" stroke="#0f172a" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+    <path d="M 312 285 Q 325 278 345 285" stroke="#0f172a" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+    
+    <!-- Eyes -->
+    <ellipse cx="272" cy="298" rx="6" ry="7" fill="#0f172a"/>
+    <circle cx="274" cy="296" r="2" fill="#ffffff"/>
+    
+    <ellipse cx="328" cy="298" rx="6" ry="7" fill="#0f172a"/>
+    <circle cx="330" cy="296" r="2" fill="#ffffff"/>
+
+    <!-- Nose -->
+    <path d="M 300 295 L 297 325 L 305 325" stroke="#ea580c" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+
+    <!-- Confident Warm Smile -->
+    <path d="M 280 348 Q 300 368 320 348" stroke="#0f172a" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+    <path d="M 283 349 Q 300 364 317 349 Z" fill="#ffffff"/>
+
+    <!-- Watch / Accessory Detail on Wrist/Sleeve (Subtle) -->
+    <circle cx="170" cy="620" r="14" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>
+  </g>
+</svg>

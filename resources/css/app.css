@@ -1,0 +1,143 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../views/**/*.blade.php';
+@source '../js/**/*.js';
+
+@theme {
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-serif: 'Playfair Display', Georgia, Cambria, 'Times New Roman', Times, serif;
+
+    --color-primary-50: #eff6ff;
+    --color-primary-100: #dbeafe;
+    --color-primary-200: #bfdbfe;
+    --color-primary-300: #93c5fd;
+    --color-primary-400: #60a5fa;
+    --color-primary-500: #3b82f6;
+    --color-primary-600: #2563eb;
+    --color-primary-700: #1d4ed8;
+    --color-primary-800: #1e40af;
+    --color-primary-900: #1e3a8a;
+    --color-primary-950: #172554;
+
+    --color-accent-400: #38bdf8;
+    --color-accent-500: #0ea5e9;
+    --color-accent-600: #0284c7;
+
+    --color-gold-400: #fbbf24;
+    --color-gold-500: #f59e0b;
+    --color-gold-600: #d97706;
+}
+
+/* Glassmorphism and modern UI utilities - Crisp Blue & White */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(219, 234, 254, 0.9);
+}
+
+.glass-card {
+    background: #ffffff;
+    backdrop-filter: blur(12px);
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+    border-color: rgba(37, 99, 235, 0.4);
+    box-shadow: 0 16px 30px -10px rgba(37, 99, 235, 0.12);
+}
+
+/* Glowing ambient blobs */
+.ambient-glow-indigo,
+.ambient-glow-blue {
+    position: absolute;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.18) 0%, rgba(37, 99, 235, 0) 70%);
+    filter: blur(60px);
+    pointer-events: none;
+}
+
+.ambient-glow-pink,
+.ambient-glow-sky {
+    position: absolute;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(14, 165, 233, 0.16) 0%, rgba(14, 165, 233, 0) 70%);
+    filter: blur(60px);
+    pointer-events: none;
+}
+
+.ambient-glow-amber {
+    position: absolute;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, rgba(245, 158, 11, 0) 70%);
+    filter: blur(60px);
+    pointer-events: none;
+}
+
+/* Floating animation */
+@keyframes floatSlow {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes floatReverse {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+.animate-float {
+    animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+    animation: floatReverse 7s ease-in-out infinite;
+}
+
+/* Subtle Shimmer for Badges */
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.shimmer-badge {
+    position: relative;
+    overflow: hidden;
+}
+
+.shimmer-badge::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0,
+        rgba(255, 255, 255, 0.35) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: shimmer 2.5s infinite;
+    content: '';
+}
+
+/* Custom scrollbar */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
