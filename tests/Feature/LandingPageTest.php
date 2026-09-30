@@ -49,4 +49,19 @@ class LandingPageTest extends TestCase
         $this->get('/kebijakan-privasi')->assertStatus(200);
         $this->get('/kontak')->assertStatus(200);
     }
+
+    /**
+     * Test that the digital invitation demo page loads successfully.
+     */
+    public function test_invitation_demo_page_renders_successfully(): void
+    {
+        $response = $this->get(route('invitation.demo'));
+
+        $response->assertStatus(200);
+        $response->assertSee('Raditya');
+        $response->assertSee('Anindya');
+        $response->assertSee('Royal Botanical Wedding');
+        $response->assertSee('Akad Nikah');
+        $response->assertSee('Resepsi Pernikahan');
+    }
 }

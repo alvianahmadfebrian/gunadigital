@@ -70,12 +70,12 @@
 
                 <div class="relative z-10 bg-white rounded-3xl p-4 sm:p-6 shadow-xl border border-blue-100">
 
-                    <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
+                    <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
                         <div class="flex items-center gap-2">
                             <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
                             <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
                             <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
-                            <span class="text-xs font-semibold text-slate-500 ml-2">Live Demo Preview</span>
+                            <span class="text-xs font-semibold text-slate-500 ml-2">Interactive Preview</span>
                         </div>
 
                         <div class="flex p-1 bg-slate-100 rounded-xl text-xs font-semibold">
@@ -94,110 +94,379 @@
                         </div>
                     </div>
 
+                    <!-- Invitation Theme Picker (Undangan Mode Only) -->
+                    <div x-show="invitationMockup.activeMode !== 'website'" class="mb-3 flex items-center justify-between px-1 text-xs">
+                        <span class="text-[11px] font-semibold text-slate-500">Pilih Tema:</span>
+                        <div class="flex items-center gap-1.5">
+                            <button @click="invitationMockup.theme = 'gold'"
+                                    :class="invitationMockup.theme === 'gold' ? 'ring-2 ring-amber-500 ring-offset-1 font-bold text-amber-900 bg-amber-100' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'"
+                                    class="px-2.5 py-1 rounded-full text-[10px] transition-all flex items-center gap-1">
+                                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                                <span>Royal Gold</span>
+                            </button>
+                            <button @click="invitationMockup.theme = 'rose'"
+                                    :class="invitationMockup.theme === 'rose' ? 'ring-2 ring-pink-500 ring-offset-1 font-bold text-pink-900 bg-pink-100' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'"
+                                    class="px-2.5 py-1 rounded-full text-[10px] transition-all flex items-center gap-1">
+                                <span class="w-2 h-2 rounded-full bg-pink-400"></span>
+                                <span>Blush Rose</span>
+                            </button>
+                            <button @click="invitationMockup.theme = 'emerald'"
+                                    :class="invitationMockup.theme === 'emerald' ? 'ring-2 ring-emerald-500 ring-offset-1 font-bold text-emerald-900 bg-emerald-100' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'"
+                                    class="px-2.5 py-1 rounded-full text-[10px] transition-all flex items-center gap-1">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                <span>Emerald</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- MOCKUP UNDANGAN DIGITAL (ROYAL BOTANICAL LUXURY PHONE FRAME) -->
                     <div x-show="invitationMockup.activeMode !== 'website'"
                          x-transition:enter="transition ease-out duration-300"
                          x-transition:enter-start="opacity-0 scale-95"
                          x-transition:enter-end="opacity-100 scale-100"
-                         class="relative mx-auto w-full max-w-[340px] bg-slate-900 rounded-[40px] p-3 shadow-2xl border-4 border-slate-800 ring-1 ring-black/10">
+                         class="relative mx-auto w-full max-w-[360px] bg-gradient-to-b from-slate-900 via-slate-800 to-black rounded-[48px] p-3 shadow-2xl border-[4px] border-slate-700 ring-1 ring-black/30">
 
-                        <div class="absolute top-5 left-1/2 -translate-x-1/2 w-24 h-4 bg-slate-950 rounded-full z-30 flex items-center justify-end px-2">
-                            <span class="w-2.5 h-2.5 rounded-full bg-slate-800 border border-slate-700"></span>
+                        <!-- Side buttons & chassis reflection accents -->
+                        <div class="absolute -left-[5px] top-24 w-[3px] h-10 bg-slate-600 rounded-l-sm"></div>
+                        <div class="absolute -left-[5px] top-38 w-[3px] h-10 bg-slate-600 rounded-l-sm"></div>
+                        <div class="absolute -right-[5px] top-28 w-[3px] h-14 bg-slate-600 rounded-r-sm"></div>
+
+                        <!-- Dynamic Island -->
+                        <div class="absolute top-4 left-1/2 -translate-x-1/2 w-28 h-5 bg-black rounded-full z-40 flex items-center justify-between px-2.5 shadow-inner">
+                            <span class="w-2.5 h-2.5 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center">
+                                <span class="w-1 h-1 rounded-full bg-blue-500/80"></span>
+                            </span>
+                            <span class="w-2 h-2 rounded-full bg-emerald-500/80 animate-pulse"></span>
                         </div>
 
-                        <div class="relative bg-gradient-to-b from-[#1a1528] via-[#120e1e] to-[#090810] text-white rounded-[32px] overflow-hidden pt-7 pb-5 px-4 h-[490px] overflow-y-auto hide-scrollbar text-center border border-white/10">
+                        <!-- INNER SCREEN (WARM ROYAL BOTANICAL THEME) -->
+                        <div class="relative bg-[#fbf9f6] text-[#1b1c1a] rounded-[38px] overflow-hidden pt-7 pb-4 px-3.5 h-[540px] overflow-y-auto hide-scrollbar scroll-smooth border border-amber-900/10 transition-colors">
 
-                            <div class="flex items-center justify-between px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md mb-4 text-[11px] border border-white/15">
-                                <div class="flex items-center gap-2">
-                                    <span :class="invitationMockup.isPlayingAudio ? 'text-pink-400 animate-spin' : 'text-slate-400'">♫</span>
-                                    <span class="text-slate-200 font-medium truncate max-w-[140px]" x-text="invitationMockup.isPlayingAudio ? 'Audio: A Thousand Years' : 'Musik Jeda'"></span>
-                                </div>
-                                <button @click="invitationMockup.toggleAudio()"
-                                        type="button"
-                                        class="px-2 py-0.5 rounded-md bg-pink-500/80 hover:bg-pink-500 text-[10px] font-bold text-white transition-colors">
-                                    <span x-text="invitationMockup.isPlayingAudio ? 'Pause' : 'Play'"></span>
-                                </button>
+                            <!-- Subtle Ambient Falling Petals inside Phone -->
+                            <div class="pointer-events-none absolute inset-0 z-10 overflow-hidden">
+                                <div class="absolute petal-1 top-0 w-2 h-3 rounded-full bg-amber-400/30 blur-[0.5px]"></div>
+                                <div class="absolute petal-2 top-0 w-2.5 h-3.5 rounded-full bg-emerald-600/25 blur-[0.5px]"></div>
+                                <div class="absolute petal-3 top-0 w-2 h-2 rounded-full bg-amber-600/25 blur-[0.3px]"></div>
+                                <div class="absolute petal-4 top-0 w-2.5 h-3.5 rounded-full bg-rose-400/30 blur-[0.5px]"></div>
                             </div>
 
-                            <div class="space-y-1 my-2">
-                                <p class="text-[11px] uppercase tracking-widest text-pink-300/80 font-medium">The Wedding Celebration</p>
-                                <h2 class="font-serif text-2xl font-bold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-pink-200 to-amber-100">
-                                    Rama & Shinta
-                                </h2>
-                                <p class="text-[11px] text-slate-300">Sabtu, 24 Oktober 2026</p>
-                            </div>
-
-                            <div class="flex items-center justify-center my-2 opacity-75">
-                                <span class="h-px w-10 bg-amber-400/40"></span>
-                                <span class="mx-2 text-amber-300 text-xs">❦</span>
-                                <span class="h-px w-10 bg-amber-400/40"></span>
-                            </div>
-
-                            <div class="my-3 p-2.5 rounded-xl bg-white/5 border border-pink-500/20 backdrop-blur-sm">
-                                <span class="block text-[10px] text-slate-400">Kepada Yth. Bapak/Ibu/Saudara/i:</span>
-                                <span class="block text-xs font-bold text-amber-200" x-text="invitationMockup.guestName"></span>
-                            </div>
-
-                            <div class="grid grid-cols-4 gap-1.5 my-3 text-center">
-                                <div class="bg-white/10 rounded-lg p-1.5 border border-white/5">
-                                    <span class="block text-sm font-extrabold text-pink-400" x-text="invitationMockup.days"></span>
-                                    <span class="text-[9px] text-slate-400 uppercase">Hari</span>
+                            <!-- FLOATING MUSIC PLAYER PILL -->
+                            <div class="relative z-30 flex items-center justify-between px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md mb-3 border border-[#c5a059]/40 shadow-md">
+                                <div class="flex items-center gap-2 overflow-hidden">
+                                    <div :class="invitationMockup.isPlayingAudio ? 'animate-spin-slow' : ''"
+                                         class="w-5 h-5 rounded-full bg-[#4d6453] border border-[#c5a059] flex items-center justify-center shrink-0 shadow-sm">
+                                        <div class="w-1.5 h-1.5 rounded-full bg-[#fbf9f6]"></div>
+                                    </div>
+                                    <div class="truncate text-left">
+                                        <p class="text-[10px] font-semibold text-[#1b1c1a] truncate max-w-[130px]"
+                                           x-text="invitationMockup.isPlayingAudio ? 'Canon in D - London Symphony' : 'Putar Musik Pengantin'"></p>
+                                    </div>
                                 </div>
-                                <div class="bg-white/10 rounded-lg p-1.5 border border-white/5">
-                                    <span class="block text-sm font-extrabold text-pink-400" x-text="invitationMockup.hours"></span>
-                                    <span class="text-[9px] text-slate-400 uppercase">Jam</span>
-                                </div>
-                                <div class="bg-white/10 rounded-lg p-1.5 border border-white/5">
-                                    <span class="block text-sm font-extrabold text-pink-400" x-text="invitationMockup.minutes"></span>
-                                    <span class="text-[9px] text-slate-400 uppercase">Menit</span>
-                                </div>
-                                <div class="bg-white/10 rounded-lg p-1.5 border border-white/5">
-                                    <span class="block text-sm font-extrabold text-pink-400" x-text="invitationMockup.seconds"></span>
-                                    <span class="text-[9px] text-slate-400 uppercase">Detik</span>
+
+                                <div class="flex items-center gap-1.5">
+                                    <div x-show="invitationMockup.isPlayingAudio" class="flex items-end gap-0.5 h-3">
+                                        <span class="w-0.5 bg-[#775a19] rounded-full eq-bar-1"></span>
+                                        <span class="w-0.5 bg-[#775a19] rounded-full eq-bar-2"></span>
+                                        <span class="w-0.5 bg-[#775a19] rounded-full eq-bar-3"></span>
+                                        <span class="w-0.5 bg-[#775a19] rounded-full eq-bar-4"></span>
+                                    </div>
+
+                                    <button @click="invitationMockup.toggleAudio()"
+                                            type="button"
+                                            class="px-2.5 py-0.5 rounded-full bg-[#4d6453] hover:bg-[#364c3c] text-[#ffdea5] text-[10px] font-bold transition-all shadow-sm">
+                                        <span x-text="invitationMockup.isPlayingAudio ? 'Pause' : 'Play ♫'"></span>
+                                    </button>
                                 </div>
                             </div>
 
-                            <div class="my-4">
-                                <button @click="invitationMockup.toggleEnvelope()"
-                                        type="button"
-                                        class="w-full py-2.5 px-4 rounded-xl font-bold text-xs bg-gradient-to-r from-pink-600 via-rose-600 to-amber-600 hover:from-pink-500 hover:to-amber-500 text-white shadow-lg shadow-pink-600/30 transition-all flex items-center justify-center gap-2">
-                                    <span x-text="invitationMockup.isOpened ? 'Tutup Detail Acara' : 'Buka Undangan Lengkap'"></span>
-                                </button>
+                            <!-- COVER / CURTAIN SECTION -->
+                            <div class="relative z-20 text-center space-y-3 py-1">
+                                <!-- Monogram Emblem with soft animated aura -->
+                                <div class="flex justify-center pt-1">
+                                    <div class="relative w-16 h-16 rounded-full p-1 bg-white/90 backdrop-blur-md shadow-lg border border-[#c5a059]/50 flex items-center justify-center">
+                                        <div class="absolute inset-1 rounded-full border border-[#c5a059]/30"></div>
+                                        <span class="font-serif font-bold text-lg text-[#775a19] tracking-wider">R & A</span>
+                                    </div>
+                                </div>
+
+                                <!-- Overline Tag -->
+                                <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#efeeeb] text-[9px] font-bold tracking-widest text-[#775a19] uppercase border border-[#d1c5b4]">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-[#4d6453] animate-ping"></span>
+                                    <span>Royal Botanical Wedding</span>
+                                </div>
+
+                                <!-- Main Headline -->
+                                <div class="space-y-0.5">
+                                    <h2 class="font-serif text-2xl font-bold tracking-tight text-[#1b1c1a] leading-tight">
+                                        Raditya <span class="text-[#775a19] italic font-normal">&</span> Anindya
+                                    </h2>
+                                    <p class="text-[11px] text-[#695b56] font-medium font-serif">
+                                        Sabtu, 18 Oktober 2025 <span class="text-[#c5a059] mx-1">•</span> Jakarta
+                                    </p>
+                                </div>
+
+                                <!-- Special Guest Card -->
+                                <div class="relative mx-auto p-3 rounded-2xl bg-white/95 border border-[#c5a059]/40 shadow-md text-center overflow-hidden">
+                                    <div class="text-[9px] uppercase tracking-wider font-semibold text-[#775a19] mb-0.5 flex items-center justify-center gap-1">
+                                        <span>⚜️</span>
+                                        <span>Kepada Yth. Tamu Undangan</span>
+                                    </div>
+                                    <h3 class="font-serif font-bold text-sm text-[#1b1c1a] my-0.5" x-text="invitationMockup.guestName"></h3>
+                                    <span class="inline-block px-2.5 py-0.5 rounded-full text-[9px] font-semibold bg-[#cde6d1] text-[#364c3c]">
+                                        Tamu Spesial & Kehormatan
+                                    </span>
+                                </div>
+
+                                <!-- Countdown Timer Grid -->
+                                <div class="grid grid-cols-4 gap-1.5 text-center">
+                                    <div class="bg-white rounded-xl py-2 px-1 border border-[#e4e2df] shadow-xs">
+                                        <span class="block text-base font-bold text-[#775a19] font-serif leading-none" x-text="invitationMockup.days"></span>
+                                        <span class="text-[8px] text-[#695b56] uppercase tracking-wider font-semibold">Hari</span>
+                                    </div>
+                                    <div class="bg-white rounded-xl py-2 px-1 border border-[#e4e2df] shadow-xs">
+                                        <span class="block text-base font-bold text-[#775a19] font-serif leading-none" x-text="invitationMockup.hours"></span>
+                                        <span class="text-[8px] text-[#695b56] uppercase tracking-wider font-semibold">Jam</span>
+                                    </div>
+                                    <div class="bg-white rounded-xl py-2 px-1 border border-[#e4e2df] shadow-xs">
+                                        <span class="block text-base font-bold text-[#775a19] font-serif leading-none" x-text="invitationMockup.minutes"></span>
+                                        <span class="text-[8px] text-[#695b56] uppercase tracking-wider font-semibold">Menit</span>
+                                    </div>
+                                    <div class="bg-white rounded-xl py-2 px-1 border border-[#e4e2df] shadow-xs">
+                                        <span class="block text-base font-bold text-[#775a19] font-serif leading-none" x-text="invitationMockup.seconds"></span>
+                                        <span class="text-[8px] text-[#695b56] uppercase tracking-wider font-semibold">Detik</span>
+                                    </div>
+                                </div>
+
+                                <!-- CTA Button: Buka Undangan -->
+                                <div class="pt-1">
+                                    <button @click="invitationMockup.isOpened = !invitationMockup.isOpened"
+                                            type="button"
+                                            class="w-full py-2.5 px-4 rounded-xl bg-[#4d6453] hover:bg-[#364c3c] text-[#ffdea5] font-bold text-xs shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                        <span x-text="invitationMockup.isOpened ? 'Tutup Detail Acara' : 'Buka Undangan Lengkap ⬇'"></span>
+                                    </button>
+                                </div>
                             </div>
 
+                            <!-- OPENED DETAILED SECTIONS (FULL INVITATION STORY) -->
                             <div x-show="invitationMockup.isOpened"
-                                 x-transition:enter="transition ease-out duration-300"
-                                 x-transition:enter-start="opacity-0 -translate-y-2"
+                                 x-transition:enter="transition ease-out duration-400"
+                                 x-transition:enter-start="opacity-0 translate-y-4"
                                  x-transition:enter-end="opacity-100 translate-y-0"
-                                 class="space-y-3 pt-2 text-left text-xs border-t border-white/10">
+                                 class="space-y-4 pt-4 text-left relative z-20 border-t border-[#d1c5b4] mt-4">
 
-                                <div class="p-2.5 rounded-xl bg-white/5 border border-white/10">
-                                    <div class="flex items-center gap-2 text-pink-300 font-semibold mb-1">
-                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                        <span>Akad & Resepsi</span>
-                                    </div>
-                                    <p class="text-slate-300 text-[11px]">Puri Ardhya Garini, Jl. Protokol Halim Perdanakusuma, Jakarta Timur</p>
-                                    <div class="mt-2 flex gap-2">
-                                        <button class="px-2 py-1 rounded bg-blue-600 hover:bg-blue-500 text-[10px] text-white">Buka Maps</button>
-                                        <button class="px-2 py-1 rounded bg-white/10 hover:bg-white/20 text-[10px] text-white">+ Google Calendar</button>
+                                <!-- Editorial Couple Photo Card -->
+                                <div class="relative rounded-2xl overflow-hidden shadow-lg bg-white p-1.5 border border-[#e4e2df]">
+                                    <div class="relative h-44 rounded-xl overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80"
+                                             alt="Raditya & Anindya"
+                                             class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+                                        <div class="absolute bottom-2.5 left-3 right-3 text-white">
+                                            <span class="text-[8px] uppercase tracking-widest text-[#ffdea5] block font-semibold">Our Eternal Beginning</span>
+                                            <p class="font-serif text-xs font-bold leading-tight">Dua Hati, Satu Janji Abadi</p>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="p-2.5 rounded-xl bg-white/5 border border-white/10">
-                                    <div class="flex items-center gap-2 text-amber-300 font-semibold mb-1">
-                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path></svg>
-                                        <span>Amplop Digital (QRIS / Bank)</span>
-                                    </div>
-                                    <p class="text-slate-300 text-[11px]">BCA: 8820-1928-19 (a.n Rama Wijaya)</p>
-                                    <button class="mt-1.5 text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">Salin Nomor Rekening</button>
+                                <!-- Holy Verse Ar-Rum 21 -->
+                                <div class="p-3 rounded-2xl bg-[#f5f3f0] border border-[#c5a059]/30 text-center space-y-1">
+                                    <span class="text-[9px] uppercase tracking-[0.2em] font-bold text-[#775a19]">QS. Ar-Rum : 21</span>
+                                    <p class="font-serif text-[10px] text-[#1b1c1a] italic leading-relaxed">
+                                        “Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu merasa tenteram kepadanya...”
+                                    </p>
                                 </div>
 
-                                <div class="p-2.5 rounded-xl bg-pink-500/10 border border-pink-500/20 text-center">
-                                    <p class="text-[11px] text-pink-200 font-medium">✓ Konfirmasi Kehadiran RSVP WhatsApp Aktif</p>
+                                <!-- The Couple Profiles -->
+                                <div class="space-y-2">
+                                    <div class="text-center">
+                                        <span class="text-[9px] uppercase tracking-widest text-[#775a19] font-bold">Mempelai Berbahagia</span>
+                                    </div>
+
+                                    <!-- Groom -->
+                                    <div class="p-3 rounded-2xl bg-white border border-[#e4e2df] shadow-xs flex items-center gap-3">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
+                                             alt="Groom"
+                                             class="w-12 h-12 rounded-xl object-cover border border-[#c5a059]/50 shrink-0">
+                                        <div class="flex-1 min-w-0">
+                                            <span class="text-[8px] uppercase tracking-wider font-bold text-[#775a19]">The Groom</span>
+                                            <h4 class="font-serif font-bold text-xs text-[#1b1c1a] truncate">Raditya Arya Pratama, S.T.</h4>
+                                            <p class="text-[9px] text-[#695b56] truncate">Putra Bpk. Bambang & Ibu Ratna</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Bride -->
+                                    <div class="p-3 rounded-2xl bg-white border border-[#e4e2df] shadow-xs flex items-center gap-3">
+                                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80"
+                                             alt="Bride"
+                                             class="w-12 h-12 rounded-xl object-cover border border-[#c5a059]/50 shrink-0">
+                                        <div class="flex-1 min-w-0">
+                                            <span class="text-[8px] uppercase tracking-wider font-bold text-[#775a19]">The Bride</span>
+                                            <h4 class="font-serif font-bold text-xs text-[#1b1c1a] truncate">Anindya Kirana Putri, S.Ds.</h4>
+                                            <p class="text-[9px] text-[#695b56] truncate">Putri Bpk. Hendra & Ibu Sofia</p>
+                                        </div>
+                                    </div>
                                 </div>
+
+                                <!-- Rangkaian Acara (Akad & Resepsi) -->
+                                <div class="space-y-2">
+                                    <div class="text-center">
+                                        <span class="text-[9px] uppercase tracking-widest text-[#775a19] font-bold">Rangkaian Acara</span>
+                                    </div>
+
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <div class="p-2.5 rounded-xl bg-white border border-[#c5a059]/30 text-center space-y-0.5">
+                                            <span class="text-xs">💍</span>
+                                            <h5 class="text-[11px] font-bold text-[#1b1c1a] font-serif">Akad Nikah</h5>
+                                            <p class="text-[9px] font-semibold text-[#775a19]">08.00 - 10.00 WIB</p>
+                                            <p class="text-[8px] text-[#695b56]">Masjid Agung Al-Azhar</p>
+                                        </div>
+                                        <div class="p-2.5 rounded-xl bg-white border border-[#4d6453]/30 text-center space-y-0.5">
+                                            <span class="text-xs">🥂</span>
+                                            <h5 class="text-[11px] font-bold text-[#1b1c1a] font-serif">Resepsi</h5>
+                                            <p class="text-[9px] font-semibold text-[#4d6453]">19.00 - 22.00 WIB</p>
+                                            <p class="text-[8px] text-[#695b56]">The Ritz-Carlton Jakarta</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Attire Guide Swatches -->
+                                    <div class="p-2.5 rounded-xl bg-white border border-[#e4e2df] text-center">
+                                        <span class="text-[9px] font-bold text-[#775a19] uppercase tracking-wider block mb-1">Panduan Busana (Attire Guide)</span>
+                                        <div class="flex items-center justify-center gap-3">
+                                            <div class="flex items-center gap-1 text-[9px] text-[#695b56]">
+                                                <span class="w-3 h-3 rounded-full bg-[#c5a059] inline-block border border-black/10"></span>
+                                                <span>Champagne</span>
+                                            </div>
+                                            <div class="flex items-center gap-1 text-[9px] text-[#695b56]">
+                                                <span class="w-3 h-3 rounded-full bg-[#4d6453] inline-block border border-black/10"></span>
+                                                <span>Sage Pine</span>
+                                            </div>
+                                            <div class="flex items-center gap-1 text-[9px] text-[#695b56]">
+                                                <span class="w-3 h-3 rounded-full bg-[#d5c3bc] inline-block border border-black/10"></span>
+                                                <span>Rose Cream</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tab Switcher: RSVP vs Amplop Digital -->
+                                <div class="bg-white rounded-2xl p-3 shadow-md border border-[#e4e2df] space-y-3">
+                                    <div class="flex p-1 bg-[#efeeeb] rounded-xl text-[10px] font-bold">
+                                        <button @click="invitationMockup.activeTab = 'rsvp'"
+                                                :class="invitationMockup.activeTab === 'rsvp' ? 'bg-white text-[#775a19] shadow-xs' : 'text-[#695b56]'"
+                                                class="flex-1 py-1.5 rounded-lg text-center transition-all">
+                                            Konfirmasi RSVP
+                                        </button>
+                                        <button @click="invitationMockup.activeTab = 'gift'"
+                                                :class="invitationMockup.activeTab === 'gift' ? 'bg-white text-[#775a19] shadow-xs' : 'text-[#695b56]'"
+                                                class="flex-1 py-1.5 rounded-lg text-center transition-all">
+                                            Amplop Digital / Kado
+                                        </button>
+                                    </div>
+
+                                    <!-- Panel RSVP -->
+                                    <div x-show="invitationMockup.activeTab === 'rsvp'" class="space-y-2">
+                                        <input type="text"
+                                               x-model="invitationMockup.rsvp.name"
+                                               placeholder="Nama Lengkap Tamu..."
+                                               class="w-full text-[10px] bg-[#f5f3f0] border border-[#d1c5b4] rounded-lg px-2.5 py-1.5 text-[#1b1c1a]">
+
+                                        <select x-model="invitationMockup.rsvp.status"
+                                                class="w-full text-[10px] bg-[#f5f3f0] border border-[#d1c5b4] rounded-lg px-2 py-1.5 text-[#1b1c1a]">
+                                            <option value="Hadir (1 Orang)">Hadir (1 Orang)</option>
+                                            <option value="Hadir (2 Orang / Berpasangan)">Hadir (2 Orang / Berpasangan)</option>
+                                            <option value="Maaf, Belum Dapat Hadir">Maaf, Belum Dapat Hadir</option>
+                                        </select>
+
+                                        <textarea x-model="invitationMockup.rsvp.notes"
+                                                  rows="2"
+                                                  placeholder="Tuliskan ucapan dan doa hangat Anda..."
+                                                  class="w-full text-[10px] bg-[#f5f3f0] border border-[#d1c5b4] rounded-lg px-2.5 py-1.5 text-[#1b1c1a]"></textarea>
+
+                                        <button @click="invitationMockup.sendRsvpWhatsapp()"
+                                                type="button"
+                                                class="w-full py-2 px-3 rounded-lg bg-[#4d6453] hover:bg-[#364c3c] text-[#ffdea5] font-bold text-[10px] flex items-center justify-center gap-1.5 transition-all shadow-sm">
+                                            <span>Kirim Konfirmasi via WhatsApp</span>
+                                        </button>
+
+                                        <div x-show="invitationMockup.rsvp.submitted" class="p-2 rounded-lg bg-[#cde6d1] text-[#364c3c] text-[9px] font-semibold text-center">
+                                            ✓ Konfirmasi RSVP berhasil terkirim!
+                                        </div>
+                                    </div>
+
+                                    <!-- Panel Amplop Digital -->
+                                    <div x-show="invitationMockup.activeTab === 'gift'" class="space-y-2 text-[10px]">
+                                        <!-- Bank BCA -->
+                                        <div class="p-2.5 rounded-xl bg-[#f5f3f0] border border-[#c5a059]/30 flex items-center justify-between">
+                                            <div>
+                                                <span class="font-bold text-[#775a19] text-[9px]">BANK BCA</span>
+                                                <p class="font-mono font-bold text-xs text-[#1b1c1a]">8820491823</p>
+                                                <p class="text-[8px] text-[#695b56]">a.n. Raditya Arya Pratama</p>
+                                            </div>
+                                            <button @click="invitationMockup.copyRekening('8820491823', 'BCA')"
+                                                    type="button"
+                                                    class="px-2 py-1 bg-white hover:bg-[#eae8e5] text-[#1b1c1a] font-bold text-[9px] rounded-lg border border-[#d1c5b4] transition-all">
+                                                <span x-text="invitationMockup.copiedBank === 'BCA' ? '✓ Tersalin' : 'Salin'"></span>
+                                            </button>
+                                        </div>
+
+                                        <!-- Bank Mandiri -->
+                                        <div class="p-2.5 rounded-xl bg-[#f5f3f0] border border-[#4d6453]/30 flex items-center justify-between">
+                                            <div>
+                                                <span class="font-bold text-[#4d6453] text-[9px]">BANK MANDIRI</span>
+                                                <p class="font-mono font-bold text-xs text-[#1b1c1a]">1370019283741</p>
+                                                <p class="text-[8px] text-[#695b56]">a.n. Anindya Kirana Putri</p>
+                                            </div>
+                                            <button @click="invitationMockup.copyRekening('1370019283741', 'Mandiri')"
+                                                    type="button"
+                                                    class="px-2 py-1 bg-white hover:bg-[#eae8e5] text-[#1b1c1a] font-bold text-[9px] rounded-lg border border-[#d1c5b4] transition-all">
+                                                <span x-text="invitationMockup.copiedBank === 'Mandiri' ? '✓ Tersalin' : 'Salin'"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Guestbook Wishes Stream -->
+                                <div class="p-3 rounded-2xl bg-white border border-[#e4e2df] space-y-2">
+                                    <div class="flex items-center justify-between text-[10px]">
+                                        <span class="font-bold text-[#775a19] uppercase tracking-wider">Untaian Doa & Harapan</span>
+                                        <span class="text-[9px] text-[#695b56]" x-text="invitationMockup.wishes.length + ' Pesan'"></span>
+                                    </div>
+
+                                    <div class="space-y-1.5 max-h-36 overflow-y-auto pr-1 hide-scrollbar">
+                                        <template x-for="(wish, idx) in invitationMockup.wishes" :key="idx">
+                                            <div class="p-2 rounded-xl bg-[#f5f3f0] border border-[#e4e2df] text-[9px] space-y-0.5">
+                                                <div class="flex items-center justify-between font-semibold">
+                                                    <span class="text-[#775a19]" x-text="wish.name"></span>
+                                                    <span class="text-[8px] text-[#695b56]" x-text="wish.time"></span>
+                                                </div>
+                                                <p class="text-[#4e4639] leading-snug" x-text="wish.message"></p>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+
+                                <!-- Bottom Action Buttons inside phone -->
+                                <div class="pt-2 pb-3 space-y-1.5 text-center">
+                                    <a href="{{ route('invitation.demo') }}"
+                                       target="_blank"
+                                       class="w-full py-2.5 px-3 rounded-xl bg-[#775a19] hover:bg-[#5d4201] text-white font-bold text-[10px] flex items-center justify-center gap-1.5 transition-all shadow-md">
+                                        <span>Buka Fullscreen Website Undangan ↗</span>
+                                    </a>
+
+                                    <button @click="invitationMockup.isOpened = false"
+                                            type="button"
+                                            class="w-full py-1.5 text-[9px] text-[#695b56] hover:text-[#1b1c1a] font-semibold">
+                                        ▲ Tutup & Kembali ke Sampul
+                                    </button>
+                                </div>
+
                             </div>
+
                         </div>
                     </div>
 
+                    <!-- MOCKUP WEBSITE BISNIS -->
                     <div x-show="invitationMockup.activeMode === 'website'"
                          x-transition:enter="transition ease-out duration-300"
                          x-transition:enter-start="opacity-0 scale-95"
@@ -249,9 +518,9 @@
                         </div>
                     </div>
 
-                    <div class="mt-4 text-center">
-                        <span class="text-[11px] text-slate-500">
-                            Klik tombol di preview untuk mencoba interaksi buka undangan & simulasi audio!
+                    <div class="mt-3 text-center">
+                        <span class="text-[11px] text-slate-500 font-medium">
+                            💡 Klik tombol tema, audio <strong class="text-slate-700">Play</strong>, buka undangan & kirim ucapan secara langsung di simulasi!
                         </span>
                     </div>
                 </div>

@@ -29,6 +29,9 @@ document.addEventListener('alpine:init', () => {
 
         // Digital Invitation Interactive Mockup
         invitationMockup: {
+            activeMode: 'invitation',
+            theme: 'botanical', // 'botanical', 'dark', 'rose'
+            activeTab: 'rsvp', // 'rsvp' or 'gift'
             isOpened: false,
             isPlayingAudio: false,
             audioElement: null,
@@ -37,6 +40,38 @@ document.addEventListener('alpine:init', () => {
             hours: 8,
             minutes: 32,
             seconds: 45,
+            copiedBank: null,
+            showQrisModal: false,
+            rsvp: {
+                name: '',
+                status: 'Hadir (2 Orang / Berpasangan)',
+                notes: '',
+                submitted: false
+            },
+            newWish: {
+                name: '',
+                message: ''
+            },
+            wishes: [
+                {
+                    name: 'Dimas & Claryssa',
+                    relation: 'Sahabat Kuliah Raditya',
+                    time: 'Baru saja',
+                    message: 'Barakallahu lakum wa baraka alaikum! Selamat menempuh babak baru yang penuh berkah Raditya & Anindya. Semoga sakinah mawaddah warahmah! 🎉'
+                },
+                {
+                    name: 'Nadira & Reza',
+                    relation: 'Rekan Desain Anindya',
+                    time: '2 jam lalu',
+                    message: 'Anindya cantik bangeeet! Terharu melihat kalian berdua akhirnya mengikat janji suci. See you at Ritz! ✨'
+                },
+                {
+                    name: 'Keluarga Besar Bpk. Faisal',
+                    relation: 'Kerabat Keluarga',
+                    time: '5 jam lalu',
+                    message: 'Selamat untuk kedua mempelai dan kedua keluarga besar. Semoga ikatan kasih senantiasa menguat di setiap musim kehidupan. 🥂'
+                }
+            ],
             init() {
                 setInterval(() => {
                     if (this.seconds > 0) {
@@ -65,6 +100,46 @@ document.addEventListener('alpine:init', () => {
             },
             toggleAudio() {
                 this.isPlayingAudio = !this.isPlayingAudio;
+            },
+            copyRekening(text, bankName) {
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(text).catch(() => {});
+                }
+                this.copiedBank = bankName;
+                setTimeout(() => {
+                    this.copiedBank = null;
+                }, 2500);
+            },
+            submitWish() {
+                if (!this.newWish.name || !this.newWish.message) return;
+                this.wishes.unshift({
+                    name: this.newWish.name,
+                    relation: 'Tamu Undangan',
+                    time: 'Baru saja',
+                    message: this.newWish.message
+                });
+                this.newWish.name = '';
+                this.newWish.message = '';
+            },
+            submitRsvp() {
+                this.rsvp.submitted = true;
+                if (this.rsvp.name && this.rsvp.notes) {
+                    this.wishes.unshift({
+                        name: this.rsvp.name,
+                        relation: this.rsvp.status,
+                        time: 'Baru saja',
+                        message: this.rsvp.notes
+                    });
+                }
+                setTimeout(() => {
+                    this.rsvp.submitted = false;
+                }, 5000);
+            },
+            sendRsvpWhatsapp() {
+                const phone = '6281234567890';
+                const text = `Halo Raditya & Anindya,%0A%0ASaya *${encodeURIComponent(this.rsvp.name || this.guestName)}* mengonfirmasi RSVP untuk acara pernikahan:%0AStatus: *${encodeURIComponent(this.rsvp.status)}*%0AUcapan: ${encodeURIComponent(this.rsvp.notes || 'Selamat berbahagia!')}%0A%0ASelamat menempuh hidup baru! ✨`;
+                window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+                this.submitRsvp();
             }
         },
 

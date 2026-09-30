@@ -14,6 +14,7 @@ use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingController::class, 'index'])->name('home');
+Route::get('/demo/undangan-digital', [LandingController::class, 'invitationDemo'])->name('invitation.demo');
 
 Route::get('/tentang-kami', [PageController::class, 'about'])->name('about');
 Route::get('/syarat-ketentuan', [PageController::class, 'terms'])->name('terms');

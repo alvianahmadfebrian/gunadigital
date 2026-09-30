@@ -141,3 +141,83 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
+/* Luxury Wedding Styles & Animations */
+.font-cinzel {
+    font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+}
+
+.font-cormorant {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+}
+
+.gold-gradient-text {
+    background: linear-gradient(135deg, #FFF6D6 0%, #F5D77F 30%, #DFB15B 60%, #FFF2B2 80%, #C4933F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.rose-gold-gradient-text {
+    background: linear-gradient(135deg, #FFF0F5 0%, #FAD2E1 30%, #F4ACB7 60%, #FFE5EC 80%, #D8829D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.emerald-gold-gradient-text {
+    background: linear-gradient(135deg, #E6F4EA 0%, #CEE5D0 30%, #E0C068 70%, #FBF3D5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gold-border-glow {
+    border: 1px solid rgba(223, 177, 91, 0.4);
+    box-shadow: 0 0 15px rgba(223, 177, 91, 0.15), inset 0 0 15px rgba(223, 177, 91, 0.05);
+}
+
+.gold-button-gradient {
+    background: linear-gradient(135deg, #D4AF37 0%, #F3E5AB 50%, #AA771C 100%);
+    color: #1a1508;
+    font-weight: 700;
+}
+
+.gold-button-gradient:hover {
+    background: linear-gradient(135deg, #E5C158 0%, #FFF3C4 50%, #BD8825 100%);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+}
+
+@keyframes spinSlow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin-slow {
+    animation: spinSlow 8s linear infinite;
+}
+
+@keyframes eqBar {
+    0%, 100% { height: 4px; }
+    50% { height: 16px; }
+}
+
+.eq-bar-1 { animation: eqBar 0.8s ease-in-out infinite 0.1s; }
+.eq-bar-2 { animation: eqBar 0.8s ease-in-out infinite 0.3s; }
+.eq-bar-3 { animation: eqBar 0.8s ease-in-out infinite 0.2s; }
+.eq-bar-4 { animation: eqBar 0.8s ease-in-out infinite 0.4s; }
+
+@keyframes pulseGoldGlow {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.3), 0 0 30px rgba(212, 175, 55, 0.15);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(212, 175, 55, 0.6), 0 0 45px rgba(212, 175, 55, 0.3);
+    }
+}
+
+.animate-gold-glow {
+    animation: pulseGoldGlow 3s ease-in-out infinite;
+}
+

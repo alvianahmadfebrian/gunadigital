@@ -89,13 +89,13 @@ class LandingController extends Controller
             ],
             [
                 'id' => 4,
-                'title' => 'The Wedding of Rama & Shinta',
+                'title' => 'The Wedding of Raditya & Anindya',
                 'category' => 'undangan',
-                'tag' => 'Undangan Rustic Gold',
+                'tag' => 'Royal Botanical Wedding',
                 'image' => 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80',
-                'description' => 'Tema rustic elegan dengan aksen champagne gold, pemutar lagu otomatis, amplop digital QRIS, dan fitur RSVP langsung ke WhatsApp.',
-                'link' => '#',
-                'badge_color' => 'rose',
+                'description' => 'Konsep Royal Botanical elegan dengan aksen champagne gold, sage pine, animasi kelopak melayang, amplop digital QRIS, dan fitur RSVP interaktif.',
+                'link' => route('invitation.demo'),
+                'badge_color' => 'amber',
             ],
             [
                 'id' => 5,
@@ -104,8 +104,8 @@ class LandingController extends Controller
                 'tag' => 'Undangan Modern Luxury',
                 'image' => 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80',
                 'description' => 'Konsep royal luxury dark-emerald berbalut ornamen emas, galeri foto grid sinematik, dan petunjuk rute Google Maps.',
-                'link' => '#',
-                'badge_color' => 'amber',
+                'link' => route('invitation.demo'),
+                'badge_color' => 'rose',
             ],
             [
                 'id' => 6,
@@ -286,5 +286,10 @@ class LandingController extends Controller
         ];
 
         return view('welcome', compact('stats', 'services', 'portfolios', 'packages', 'testimonials', 'faqs'));
+    }
+
+    public function invitationDemo(): View
+    {
+        return view('invitations.demo');
     }
 }
